@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Groovy Kool</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Oswald', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+    }
+
+    .header {
+      background-color: #fff;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .header-left,
+    .header-center,
+    .header-right {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .header-left {
+      width: 33%;
+    }
+
+    .header-center {
+      width: 33%;
+      text-align: center;
+    }
+
+    .header-right {
+      width: 33%;
+      text-align: right;
+    }
+
+    .center-logo {
+      width: 180px;
+      height: auto;
+    }
+
+    .header-link {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .header-link:hover {
+      color: #ABDE00;
+    }
+.cart-count {
+  background-color: #ABDE00;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+  margin-left: 6px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.cart-count.bump {
+  transform: scale(1.3);
+}
+
+  
+
+  .nav {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+  background-color: #000000;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  z-index: 10;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 10px;
+  display: inline-block;
+}
+
+.nav a:hover {
+  color: #ABDE00;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  z-index: 99;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+  color: #000;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: normal;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: #ABDE00;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+    .hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+	  
+   .section-title-banner {
+  height: 1px;
+}
+
+    .product-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .section-title-image img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto 0;
+    }
+
+    .product-card {
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+
+    .product-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: opacity 0.4s ease;
+      display: block;
+    }
+
+    .hover-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .product-card:hover .hover-img {
+      opacity: 1;
+    }
+
+    .product-card:hover .primary-img {
+      opacity: 0;
+    }
+
+    .product-title {
+      margin: 10px 0 5px;
+      font-size: 1.1rem;
+    }
+
+    .product-price {
+      color: #FF6347;
+      font-weight: bold;
+    }
+  
+	  .categories-section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.category-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.category-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.category-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
+}
+
+  .category-card img {
+    height: 180px;
+  }
+	  
+    .vibe {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .vibe h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .vibe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 15px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .vibe-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .sale-banner {
+      background-color: #ABDE00 ;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5rem;
+      padding: 0.5px;
+    }
+  .about-us {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 40px 20px;
+  color: #333;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.about-logo {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+.about-us p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+    .footer-icons {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f0f0f0;
+  padding: 20px;
+  font-weight: bold;
+  text-align: center;
+  flex-wrap: wrap;
+}
+	  .footer-column ul li {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-column ul li:hover {
+  color: #ABDE00;
+}
+
+
+ .footer-icons .icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 120px;
+  margin: 10px;
+}
+
+.footer-icon-img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  object-fit: contain;
+}
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-around;
+      background-color: #222;
+      color: white;
+      padding: 30px 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-column {
+      max-width: 250px;
+      margin: 10px;
+    }
+
+    .footer-column h4 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin: 5px 0;
+    }
+
+    .join-button {
+      padding: 8px 20px;
+      background-color:#ABDE00 ;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .socials img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+	  .footer-logo {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-logo img {
+  max-width: 200px;
+  height: auto;
+}
+
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-left"></div>
+    <div class="header-center">
+      <img src="Artboard 1.png" alt="Groovy Kool Logo" class="center-logo" />
+    </div>
+    <div class="header-right">
+      <a href="#" class="header-link">Account</a>
+      <a href="#" class="header-link">
+  Cart <span class="cart-count">0</span>
+</a>
+
+
+    </div>
+  </header>
+
+ <nav class="nav">
+  <div class="dropdown">
+    <a href="#">Women</a>
+    <div class="dropdown-content">
+      <a href="#">Tops</a>
+      <a href="#">Dresses</a>
+      <a href="#">Sets</a>
+      <a href="#">Tees</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="#">Men</a>
+    <div class="dropdown-content">
+      <a href="#">Shirts</a>
+      <a href="#">Jeans</a>
+      <a href="#">Trousers</a>
+      <a href="#">Polo Tees</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="#">Footwear</a>
+    <div class="dropdown-content">
+      <a href="#">Sneakers</a>
+      <a href="#">Heels</a>
+      <a href="#">Flats</a>
+      <a href="#">Boots</a>
+    </div>
+  </div>
+
+  <a href="#">Sales</a>
+  <a href="#">New Arrivals</a>
+  <a href="#">Support</a>
+  <a href="#">Track your Order</a>
+</nav>
+
+
+  <!-- Hero Banner -->
+<section class="hero">
+  <img src="hero Banner.png" alt="Groovy Kool Hero Banner">
+</section>
+
+
+ <section class="product-section">
+  <div class="section-title-image">
+    <img src="Banner for site.png" height="150" alt="Ruby Red Title" />
+  </div> 
+
+  <div class="product-grid"> 
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="thin strap crop top front.webp" alt="Product 1" class="primary-img">
+        <img src="thin strap crop top back.webp" alt="Product 1 Alt" class="hover-img">
+      </div>
+      <h3 class="product-title">Slim Fit Cami Top In Burgundy</h3>
+      <p class="product-price">₹549</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="V Neck Wrap Top In Black Cherry front.webp" alt="Product 2" class="primary-img">
+        <img src="V Neck Wrap Top In Black Cherry back.webp" alt="Product 2 Alt" class="hover-img">
+      </div>
+      <h3 class="product-title">V Neck Wrap Top In Black Cherry</h3>
+      <p class="product-price">₹699</p>
+    </div>
+
+	  <div class="product-card">
+      <div class="product-image">
+        <img src="black jeans front.webp" alt="Product 3" class="primary-img">
+        <img src="Black jeans back.webp" alt="Product 3 Alt" class="hover-img">
+      </div>
+      <h3 class="product-title">Men's Baggy Black Jeans</h3>
+      <p class="product-price">₹1399</p>
+    </div>
+	  
+	  <div class="product-card">
+      <div class="product-image">
+        <img src="Ribbed red Shirt front.jpg" alt="Product 4" class="primary-img">
+        <img src="Ribbed red shirt back.jpg" alt="Product 4 Alt" class="hover-img">
+      </div>
+      <h3 class="product-title">Men's Ribbed Red Shirt</h3>
+      <p class="product-price">₹799</p>
+    </div>
+	  
+    <div class="product-card">
+      <div class="product-image">
+        <img src="Side Split Ruched Red and Black Midi Dress Front.webp" alt="Product 5" class="primary-img">
+        <img src="Side Split Ruched Red and Black Midi Dress Back.webp" alt="Product 5 Alt" class="hover-img">
+      </div>
+      <h3 class="product-title">Side Split Ruched Red and Black Midi Dress</h3>
+      <p class="product-price">₹999</p>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="Strip Print Halter Top Back.webp" alt="Product 6" class="primary-img">
+        <img src="Strip Print Halter Top Front.webp" alt="Product 6 Alt" class="hover-img">
+      </div>
+      <h3 class="product-title">Strip Print Halter Top</h3>
+      <p class="product-price">₹499</p>
+    </div>
+	  
+	  <div class="product-card">
+      <div class="product-image">
+        <img src="Ribbed red polo front.webp" alt="Product 7" class="primary-img">
+        <img src="Ribbed red polo back.webp" alt="Product 7 Alt" class="hover-img">
+      </div>
+      <h3 class="product-title">Men's Red Ribbed Polo </h3>
+      <p class="product-price">₹699</p>
+    </div>
+
+	  <div class="product-card">
+      <div class="product-image">
+        <img src="Mens black casual pant shirt front.webp" alt="Product 8" class="primary-img">
+        <img src="Mens black casual pant shirt back.webp" alt="Product 8 Alt" class="hover-img">
+      </div>
+      <h3 class="product-title">Men's Black Casual Pant Shirt</h3>
+      <p class="product-price">₹1199</p>
+    </div>
+  </div> 
+</section>
+
+  <section class="sale-banner">
+    <p>Shop By Category</p>
+  </section>
+
+	<section class="categories-section">
+  <div class="categories-grid">
+
+    <div class="category-card">
+      <img src="Black Mesh Top r front.webp" alt="Tops">
+      <div class="category-title">Tops</div>
+    </div>
+
+    <div class="category-card">
+      <img src="Black Drawstring Flare Pants blacks.webp" alt="Pants">
+      <div class="category-title">Pants</div>
+    </div>
+
+    <div class="category-card">
+      <img src="Leaf print Mini Dress.webp" alt="Dresses">
+      <div class="category-title">Dresses</div>
+    </div>
+
+    <div class="category-card">
+      <img src="Two piece Set.webp" alt="Sets">
+      <div class="category-title">Sets</div>
+    </div>
+
+    <div class="category-card">
+      <img src="Shoes.webp" alt="Shoes">
+      <div class="category-title">Shoes</div>
+    </div>
+
+    <div class="category-card">
+      <img src="Mens full suite front.webp" alt="Men">
+      <div class="category-title">Men</div>
+    </div>
+
+    <div class="category-card">
+      <img src="oversized tee.webp" alt="Tees">
+      <div class="category-title">Tees</div>
+    </div>
+
+    <div class="category-card">
+      <img src="Combos.webp" alt="Combos">
+      <div class="category-title">Combos</div>
+    </div>
+
+  </div>
+</section>
+ 
+	<section class="about-us">
+  <img src="Artboard 1.png" alt="Groovy Kool Logo" class="about-logo">
+  <p>
+    At Groovy Kool, we’re all about stylish sustainability. Our clothes are ethically made, designed to fit all body types, and crafted with care for long-lasting wear. We prioritize recyclable materials and eco-conscious packaging, making sure both you and the planet stay fresh. You're not just a customer — you're part of the Kool movement.
+  </p>
+</section>
+
+  <section class="footer-icons">
+  <div class="icon">
+    <img src="ethical (1).png" alt="Ethical Queen" class="footer-icon-img" />
+    Ethical Queen
+  </div>
+  <div class="icon">
+    <img src="fast-delivery.png" alt="Fast Delivery" class="footer-icon-img" />
+    Everybody Say SLAY
+  </div>
+  <div class="icon">
+    <img src="tailoring.png" alt="Just Fits For You" class="footer-icon-img" />
+    Just Fits For You
+  </div>
+  <div class="icon">
+    <img src="return.png" alt="Easy Swapping" class="footer-icon-img" />
+    Easy Swapping
+  </div>
+</section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>SHOP</h4>
+        <ul>
+          <li>Women</li>
+          <li>Men</li>
+          <li>Footwear</li>
+          <li>T-Shirts</li>
+          <li>Trousers</li>
+          <li>Jeans</li>
+          <li>Support</li>
+          <li>Track My Order</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>SUPPORT</h4>
+        <ul>
+          <li>Exchanges</li>
+          <li>Privacy Policy</li>
+          <li>Shipping</li>
+          <li>Sizing Charts</li>
+          <li>Support</li>
+          <li>Terms of Service</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+  <h4>Join our newsletter!</h4>
+  <button class="join-button">JOIN</button>
+  <p>Follow us everywhere online:</p>
+  <div class="socials">
+    <img src="icons8-facebook-50.png" alt="Facebook">
+    <img src="icons8-instagram-50.png" alt="Instagram">
+    <img src="icons8-x-50.png" alt="X">
+    <img src="icons8-whatsapp-64.png" alt="WhatsApp">
+  </div>
+
+  <div class="footer-logo">
+    <img src="Artboard 1.png" alt="Groovy Kool Logo">
+  </div>
+</div>
+
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
